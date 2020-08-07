@@ -9,8 +9,13 @@ if [ "${#DIRS[@]}" -eq 0 ]; then
   echo "No profile folder(s) found. Could not proceed."
   exit 1
 else
-  # Fetch preferences from remote.
-  PREFS=$(curl https://raw.githubusercontent.com/theedoran/firefox-config/master/user.js)
+  # Check if user.js file exists locally. If so, cat prefs from it.
+  # Otherwise, fetch them from remote.
+  if [ -f ./user.js ]; then
+    PREFS=$(cat ./user.js)
+  else
+    PREFS=$(curl https://raw.githubusercontent.com/theedoran/firefox-config/master/user.js)
+  fi
   for d in "${DIRS[@]}"; do
     echo "$PREFS" > "$d/user.js"
     echo "Copied user preferences to $d/user.js"
