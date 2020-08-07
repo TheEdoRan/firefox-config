@@ -1,0 +1,18 @@
+#!/usr/bin/env bash
+
+# Find profile folders via *.default-release name.
+readarray -d '' DIRS < <(find $HOME/.mozilla/firefox -name "*.default-release" -print0 2>/dev/null)
+
+# If no profile folder(s) found, exit the program.
+# Otherwise, iterate through folders and copy user preferences.
+if [ "${#DIRS[@]}" -eq 0 ]; then
+  echo "No profile folder(s) found. Could not proceed."
+  exit 1
+else
+  # Fetch preferences from remote.
+  PREFS=$(curl https://raw.githubusercontent.com/theedoran/firefox-config/master/user.js)
+  for d in "${DIRS[@]}"; do
+    echo "$PREFS" > "$d/user.js"
+    echo "Copied user preferences to $d/user.js"
+  done
+fi

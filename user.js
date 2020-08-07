@@ -1,0 +1,16 @@
+user_pref("gfx.webrender.all", true);
+user_pref("layers.acceleration.force-enabled", true);
+user_pref("layers.gpu-process.enabled", false);
+user_pref("network.trr.mode", 2);
+user_pref("network.security.esni.enabled", true);
+user_pref("browser.cache.disk.enable", false);
+user_pref("full-screen-api.warning.delay", -1);
+user_pref("full-screen-api.warning.timeout", -1);
+user_pref("general.autoScroll", true);
+user_pref("general.smoothScroll", false);
+user_pref("browser.fullscreen.autohide", false);
+user_pref("browser.aboutConfig.showWarning", false);
+user_pref("apz.gtk.kinetic_scroll.enabled", false);
+user_pref("browser.tabs.warnOnClose", false);
+user_pref("ui.context_menus.after_mouseup", true);
+user_pref("toolkit.legacyUserProfileCustomizations.stylesheets", true);
